@@ -7,6 +7,7 @@ GitHub Pages için buildless HTML/CSS sitesi. Yayıncı Arthyra Studio; ilk uygu
 - `docs/assets/og-image.jpg`: 1200×630 paylaşım önizlemesi; `../marka/arthyra-studio/google-play-ust-bilgi-4096x2304.jpg`'den kırpıldı.
 - `docs/`: GitHub Pages yayın kökü; CSS ve yerel marka görselleri burada.
 - `docs/gunebirsoz/sozler-v1.json`: Güne Bir Söz 1.1.2+ uygulamasının indirdiği söz kataloğu (CC BY-SA 4.0, Vikisöz'den). Elle düzenleme; `../gunluk-alinti/scripts/build-quote-catalog.mjs` üretir, sonra burada commit/push. Yolu ve `format` alanını değiştirmek yayındaki uygulamaları bozar; yeni biçim için `sozler-v2.json` ekle.
+- `docs/gunebirsoz/kaynaklar/`: "Kaynaklar ve lisans" sayfası; `generate.py` `sozler-v1.json`'dan yazar başına söz sayısı, Vikisöz sayfa sürümü ve katkıda bulunanlar bağlantısını üretir. Uygulama Vikisöz/CC BY-SA ibaresini söz kartında değil, Ayarlar'dan buraya bağlantıyla verir; bu sayfayı kaldırma.
 - `docs/CNAME`: özel alan adı `arthyrastudio.info`. Silme; üretici dokunmaz. DNS Squarespace'te (GitHub Pages A/AAAA, `www` CNAME, `_github-pages-challenge-onrart` doğrulama TXT); Google Workspace MX/SPF/DKIM/DMARC kayıtlarına dokunma.
 - `GUNCEL_DURUM.md`: güncel durum ve sonraki adım. `docs/` içine koyma; orası herkese açık yayın köküdür.
 

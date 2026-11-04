@@ -31,6 +31,8 @@
 - `docs/gunebirsoz/sozler-v1.json` canlı: HTTP 200, `application/json`, gzip ~161 KB, CORS `*`, 1.910 kayıt (curl ile doğrulandı). Üretim ve yazar seçimi gunluk-alinti deposunda (`scripts/`).
 - Gizlilik TR/EN güncellendi: 1.1.2 kataloğu bu siteden (GitHub Pages) indirir, 1.1.1 Vikisöz API'sine bağlanır; kuruluma özgü sıra bilgisi cihazdan çıkmaz.
 
+- "Kaynaklar ve lisans" sayfası üretildi (141 satır; HTMLParser ile etiket dengesi, tek h1; yerel önizlemede 375 px'te taşma yok).
+
 ## Açık işler
 
 - Play Console'da gizlilik URL incelemesinin onaylandığını kontrol et (Google: genelde 7 güne kadar).

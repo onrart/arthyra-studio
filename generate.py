@@ -23,7 +23,7 @@ contact_en=(f'<a href="mailto:{escape(email)}">{escape(email)}</a>' if email els
 base=config['base_url'].rstrip('/')
 if not re.fullmatch(r'https://[a-z0-9.-]+(/[A-Za-z0-9._-]+)*',base):
     raise SystemExit('Invalid base_url')
-PAGES=['/','/gunebirsoz/gizlilik/','/gunebirsoz/privacy/']
+PAGES=['/','/gunebirsoz/gizlilik/','/gunebirsoz/privacy/','/gunebirsoz/kaynaklar/']
 POLICY_ALTERNATES=[('tr','/gunebirsoz/gizlilik/'),('en','/gunebirsoz/privacy/'),('x-default','/gunebirsoz/gizlilik/')]
 
 def seo(title,description,lang,path,alternates=()):
@@ -92,6 +92,30 @@ for lang,slug,sections in [('tr','gizlilik',tr),('en','privacy',en)]:
     page_title=f'Güne Bir Söz — {title} | Arthyra Studio'
     html=head(page_title,intro,'../../',lang,seo(page_title,intro,lang,f'/gunebirsoz/{slug}/',POLICY_ALTERNATES))+f"""<header class="wrap header">{brand('../../')}<nav class="language" aria-label="Language">{language}</nav></header><main class="wrap policy" id="main"><div class="policy-layout"><aside class="policy-index" aria-label="{'İçindekiler' if lang=='tr' else 'Contents'}"><strong>{'Bu sayfada' if lang=='tr' else 'On this page'}</strong>{toc}</aside><article><p class="eyebrow">Arthyra Studio / Güne Bir Söz</p><h1>{title}</h1><p class="lead">{intro}</p><div class="meta"><span>{date}</span><span>Android · com.onrart.gunlukalinti</span></div><div class="summary"><p>{summary}</p></div>{article}</article></div></main>"""+footer('../../',lang)
     (ROOT/f'docs/gunebirsoz/{slug}/index.html').write_text(html,encoding='utf-8')
+# Attribution page for the quote catalog (CC BY-SA 4.0 §3(a)(2): a linked resource with the credits).
+# The app links here from Ayarlar instead of showing the Vikisöz credit on every quote card.
+from urllib.parse import quote as urlquote
+catalog=json.loads((ROOT/'docs/gunebirsoz/sozler-v1.json').read_text(encoding='utf-8'))
+if catalog.get('format')!=1 or catalog.get('license')!='CC BY-SA 4.0': raise SystemExit('Unexpected quote catalog format')
+by_author={}
+for q in catalog['quotes']:
+    entry=by_author.setdefault(q['author'],{'count':0,'revision':q['revision']})
+    entry['count']+=1; entry['revision']=max(entry['revision'],q['revision'])
+generated=Date.fromisoformat(catalog['generated'])
+rows=''.join(
+    f'<tr><td>{escape(name)}</td><td>{e["count"]}</td><td><a href="https://tr.wikiquote.org/w/index.php?title={urlquote(name)}&amp;oldid={e["revision"]}">Sayfa</a> · '
+    f'<a href="https://tr.wikiquote.org/w/index.php?title={urlquote(name)}&amp;action=history">Katkıda bulunanlar</a></td></tr>'
+    for name,e in sorted(by_author.items(),key=lambda kv:kv[0].lower()))
+src_title='Güne Bir Söz — Kaynaklar ve lisans | Arthyra Studio'
+src_intro='Uygulamadaki alıntıların nereden geldiği, kimin emeği olduğu ve hangi lisansla kullanıldığı.'
+sources=head(src_title,src_intro,'../../','tr',seo(src_title,src_intro,'tr','/gunebirsoz/kaynaklar/'))+f"""<header class="wrap header">{brand('../../')}</header><main class="wrap policy" id="main"><article class="sources"><p class="eyebrow">Arthyra Studio / Güne Bir Söz</p><h1>Kaynaklar ve lisans</h1><p class="lead">{src_intro}</p><div class="meta"><span>Derleme: {generated.day} {months_tr[generated.month-1]} {generated.year}</span><span>{catalog['count']} söz · {len(by_author)} yazar</span></div>
+<div class="summary"><p><strong>Kısaca:</strong> Sözler ve kaynak bilgileri <a href="https://tr.wikiquote.org/">Türkçe Vikisöz</a> katkıda bulunanlarının çalışmasıdır ve <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.tr">CC BY-SA 4.0</a> lisansıyla kullanılır. Uygulamada her sözün yazarı ve eseri gösterilir.</p></div>
+<section aria-labelledby="nasil"><h2 id="nasil">Koleksiyon nasıl hazırlanır?</h2><p>Arthyra Studio, Vikisöz’deki yazar sayfalarından yalnız bir eser başlığı veya kaynak notu bulunan sözleri seçer. Kaynaksız, tartışmalı veya yanlış atfedilmiş bölümler alınmaz. Seçim sırasında viki biçimlendirmesi temizlenir ve uzun kaynak notları kısaltılabilir; sözlerin metni değiştirilmez. Yaşayan kişilerin sözleri koleksiyona alınmaz.</p><p>Bu derleme de CC BY-SA 4.0 lisanslıdır. Uygulamanın indirdiği dosyanın tamamı, her sözün alındığı sayfa sürümüyle birlikte <a href="../sozler-v1.json">sozler-v1.json</a> adresindedir.</p></section>
+<section aria-labelledby="yazarlar"><h2 id="yazarlar">Yazarlar ve Vikisöz sayfaları</h2><p>“Sayfa” bağlantısı sözlerin alındığı sürümü, “Katkıda bulunanlar” bağlantısı o sayfanın yazar geçmişini açar.</p><table><thead><tr><th scope="col">Yazar</th><th scope="col">Söz</th><th scope="col">Vikisöz</th></tr></thead><tbody>{rows}</tbody></table></section>
+<section aria-labelledby="iletisim"><h2 id="iletisim">Düzeltme ve iletişim</h2><p>Bir sözün kaynağında veya atfında hata görürseniz bize yazın: {contact}</p></section></article></main>"""+footer('../../')
+(ROOT/'docs/gunebirsoz/kaynaklar').mkdir(parents=True,exist_ok=True)
+(ROOT/'docs/gunebirsoz/kaynaklar/index.html').write_text(sources,encoding='utf-8')
+
 # GitHub Pages serves 404.html for any missing path, so links are root-absolute here.
 notfound=head('Sayfa bulunamadı | Arthyra Studio','Aradığın sayfa bulunamadı.','/','tr','<meta name="robots" content="noindex">')+f"""
 <div class="dark"><header class="wrap header">{brand('/')}<nav class="nav" aria-label="Ana menü"><a href="/#uygulamalar">Uygulamalar</a><a href="/gunebirsoz/gizlilik/">Gizlilik</a><a href="/#iletisim">İletişim</a></nav></header></div>
@@ -101,4 +125,4 @@ notfound=head('Sayfa bulunamadı | Arthyra Studio','Aradığın sayfa bulunamad�
 urls=''.join(f'<url><loc>{base}{path}</loc><lastmod>{updated.isoformat()}</lastmod></url>' for path in PAGES)
 (ROOT/'docs/sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',encoding='utf-8')
 (ROOT/'docs/robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
-print('Generated home, Turkish/English privacy, 404, sitemap and robots. Contact:', 'ready' if email else 'awaiting user address')
+print('Generated home, Turkish/English privacy, sources, 404, sitemap and robots. Contact:', 'ready' if email else 'awaiting user address')
