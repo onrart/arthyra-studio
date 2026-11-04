@@ -26,6 +26,11 @@
 - Üretece canonical, TR/EN hreflang (x-default TR), Open Graph/Twitter kartı, 1200×630 `og-image.jpg`, `sitemap.xml`, robots Sitemap satırı ve markalı `404.html` (noindex) eklendi.
 - Doğrulama: dört HTML'de etiket dengesi, tek h1, benzersiz kimlik ve baş etiketleri Python HTMLParser ile; sitemap XML ayrıştırıldı; yerel önizlemede 404 masaüstü/mobil (375 px, yatay taşma yok) ve ana sayfa görselleri/konsol hatasız. Canlı (curl, push sonrası): `/`, gizlilik, `sitemap.xml`, `robots.txt`, `og-image.jpg` 200 ve doğru içerik türü; ana sayfada canonical ve og:image mutlak adresle; olmayan yol 404 ve markalı başlık. Paylaşım önizlemesi bir sosyal uygulamada denenmedi.
 
+## Söz kataloğu (4 Kasım 2026)
+
+- `docs/gunebirsoz/sozler-v1.json` canlı: HTTP 200, `application/json`, gzip ~161 KB, CORS `*`, 1.910 kayıt (curl ile doğrulandı). Üretim ve yazar seçimi gunluk-alinti deposunda (`scripts/`).
+- Gizlilik TR/EN güncellendi: 1.1.2 kataloğu bu siteden (GitHub Pages) indirir, 1.1.1 Vikisöz API'sine bağlanır; kuruluma özgü sıra bilgisi cihazdan çıkmaz.
+
 ## Açık işler
 
 - Play Console'da gizlilik URL incelemesinin onaylandığını kontrol et (Google: genelde 7 güne kadar).
