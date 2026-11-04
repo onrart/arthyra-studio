@@ -1,9 +1,16 @@
 # Güncel durum
 
-4 Kasım 2026: Arthyra Studio geliştirici sitesi ve Güne Bir Söz TR/EN gizlilik sayfaları hazır. Kullanıcının sayfa kurulum isteği kapsamında ayrı public `onrart/arthyra-studio` deposu / GitHub Pages hedefleniyor. Yayın kaynağı main:/docs. İletişim adresi kullanıcı tarafından `destek@arthyrastudio.info` olarak seçildi ve kamuya açık kullanım için verildi. Kullanıcı ayrıca bu e-posta hizmetini aldığını bildirdi; alan adı DNS bağlantısı bu işte değiştirilmedi.
+4 Kasım 2026 — Yayında. Public depo: https://github.com/onrart/arthyra-studio ; GitHub Pages main:/docs.
 
-Metin dayanağı: Güne Bir Söz 1.1.1 kaynaklarında storage, catalog, wikiquote, notifications, widget, story akışları ve Android manifesti statik olarak incelendi. Yerel kayıt, doğrudan Vikisöz bağlantısında ağ metadatası, yerel bildirim, kullanıcı başlatmalı paylaşım ve allowBackup=true sistem yedeklemesi açıklanıyor. Politika Google Play, Wikimedia ve GitHub'ın resmi belgelerine bağlantı içeriyor; Google kabul garantisi verilmez.
+- Ana sayfa: https://onrart.github.io/arthyra-studio/
+- Türkçe gizlilik: https://onrart.github.io/arthyra-studio/gunebirsoz/gizlilik/
+- English privacy: https://onrart.github.io/arthyra-studio/gunebirsoz/privacy/
+- Kullanıcının onayladığı iletişim adresi: destek@arthyrastudio.info.
 
-Kontrol: Üç HTML sayfasında etiket dengesi, tek h1, benzersiz kimlikler, yerel bağlantı/varlıklar, doğru iletişim adresi ve script bulunmadığı doğrulandı. Yerel HTTP önizleme /, /gunebirsoz/gizlilik/, /gunebirsoz/privacy/ ve CSS için 200 döndü. Codex önizleme açılışı kuyruğa alındı; doğrudan tarayıcı kontrol aracı bulunmadığından görsel tarayıcı QA yapılamadı.
+Doğrulama: Üç HTML sayfasında etiket dengesi, tek h1, benzersiz kimlikler, yerel bağlantı/varlıklar, doğru iletişim adresi ve script bulunmadığı doğrulandı. Yerel HTTP ve ardından üç public HTTPS adresi girişsiz HTTP200 döndü; yayımlanan metinde Arthyra Studio ve onaylı e-posta görüldü, taslak uyarısı yok. Tarayıcı kontrol aracı bulunmadığından doğrudan görsel tarayıcı QA yapılamadı; önizleme/handoff Codex'e kuyruğa alındı.
 
-Devam: public depo ve Pages yayını, girişsiz HTTPS sayfa doğrulaması. Alan adı için CNAME/DNS henüz ayarlanmadı. Uygulamadaki Ayarlar'a politika bağlantısı eklenmesi ayrıca gerekiyor; mevcut mobil code8 bu yeni URL'yi içermiyor.
+Politika dayanağı: Güne Bir Söz 1.1.1 uygulamasının storage, catalog, wikiquote, notifications, widget, story ve Android manifesti statik incelemesi. Yerel kayıt, doğrudan Vikisöz bağlantısında ağ metadatası, yerel bildirim, kullanıcı başlatmalı paylaşım ve allowBackup=true sistem yedeklemesi açıklanır. Google Play, Wikimedia ve GitHub resmi belgeleri kontrol edildi. Google kabulü/hukuki uygunluk garantisi verilmez.
+
+İleride: arthyrastudio.info için DNS/CNAME bağlantısı henüz kurulmadı; mevcut canlı URL GitHub Pages'tir. Mobil uygulamada bu yeni politika URL'sinin Ayarlar'a eklenmesi kalan iştir; uygulamanın güncel durum dosyasında takip edilir. Başka uygulama eklenirse ona özel veri akışına göre ayrı politika yazılır.
+
+Yayın kapsamı bu site dosyaları ve kamuya açık logolardır. Mobil uygulamanın özel kaynakları ve imza dosyaları bu depoya dahil edilmedi. site.json ve generate.py, sonraki politika/iletişim güncellemeleri için tek kaynaktır; python generate.py --publish sonrası HTML değişiklikleri commit/push ile Pages'e gider.

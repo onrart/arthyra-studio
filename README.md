@@ -1,6 +1,10 @@
 # Arthyra Studio
 
-Geliştirici tanıtım sayfası ve Güne Bir Söz gizlilik politikası. Statik HTML/CSS; üçüncü taraf yazı tipi, analitik veya JavaScript gerektirmez.
+Geliştirici tanıtım sayfası ve Güne Bir Söz gizlilik politikası.
+
+Canlı site: https://onrart.github.io/arthyra-studio/
+
+Google Play gizlilik URL’si: https://onrart.github.io/arthyra-studio/gunebirsoz/gizlilik/ Statik HTML/CSS; üçüncü taraf yazı tipi, analitik veya JavaScript gerektirmez.
 
 ## Yerel geliştirme
 
