@@ -19,11 +19,11 @@
 - `https://onrart.github.io/arthyra-studio/gunebirsoz/gizlilik/` → `https://arthyrastudio.info/gunebirsoz/gizlilik/` yönlendirmesi tarayıcıda görüldü.
 - Canlı doğrulama (curl, 4 Kasım 2026): `arthyrastudio.info` 185.199.x.153'e çözülüyor; `/`, `/gunebirsoz/gizlilik/`, `/gunebirsoz/privacy/` HTTPS 200 ve doğru başlıklar; gizlilik sayfasında `mailto:destek@arthyrastudio.info`; `http://` → 301; eski `/GUNCEL_DURUM.md` 404.
 - Sınır: O anda `www.arthyrastudio.info` hâlâ önbellekteki Squarespace adresine (198.185.159.144) gidiyordu. Uygulama içi tarayıcı paneli de kendi önbelleğiyle park sayfasını ("Yakında") gösteriyordu. Eski kayıtların TTL'si 1–4 saat.
-- Google Play Console → Uygulama içeriği → Gizlilik politikası URL'si `https://arthyrastudio.info/gunebirsoz/gizlilik/` olarak kaydedildi (önceki: github.io adresi). Yayın özetinde "1 değişikliği incelemeye gönder" bekliyor; yönetilen yayınlama kapalı.
+- Google Play Console → Uygulama içeriği → Gizlilik politikası URL'si `https://arthyrastudio.info/gunebirsoz/gizlilik/` olarak kaydedildi (önceki: github.io adresi). Kullanıcı onayıyla 4 Kasım 2026'da incelemeye gönderildi; yayın özetinde "İncelenmekte olan değişiklikler" altında, önce otomatik hızlı kontroller (≤14 dk). Yönetilen yayınlama kapalı, onaylanınca kendiliğinden yürürlüğe girer.
 
 ## Açık işler
 
-- Play Console yayın özetinde gizlilik URL değişikliğini incelemeye gönder (kullanıcı onayı bekleniyor).
+- Play Console'da gizlilik URL incelemesinin onaylandığını kontrol et (Google: genelde 7 güne kadar).
 - `www.arthyrastudio.info`'nun GitHub'a yönlendiğini önbellek dolunca doğrula.
 - Mobil uygulamada politika bağlantısının Ayarlar'a eklenmesi; uygulamanın güncel durum dosyasında takip edilir.
 - DMARC birkaç hafta rapor topladıktan sonra `p=quarantine` düşünülebilir.
