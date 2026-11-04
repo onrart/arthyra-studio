@@ -24,7 +24,7 @@
 ## Teknik SEO (4 Kasım 2026)
 
 - Üretece canonical, TR/EN hreflang (x-default TR), Open Graph/Twitter kartı, 1200×630 `og-image.jpg`, `sitemap.xml`, robots Sitemap satırı ve markalı `404.html` (noindex) eklendi.
-- Doğrulama: dört HTML'de etiket dengesi, tek h1, benzersiz kimlik ve baş etiketleri Python HTMLParser ile; sitemap XML ayrıştırıldı; yerel önizlemede 404 masaüstü/mobil (375 px, yatay taşma yok) ve ana sayfa görselleri/konsol hatasız. Canlı kontrol aşağıda.
+- Doğrulama: dört HTML'de etiket dengesi, tek h1, benzersiz kimlik ve baş etiketleri Python HTMLParser ile; sitemap XML ayrıştırıldı; yerel önizlemede 404 masaüstü/mobil (375 px, yatay taşma yok) ve ana sayfa görselleri/konsol hatasız. Canlı (curl, push sonrası): `/`, gizlilik, `sitemap.xml`, `robots.txt`, `og-image.jpg` 200 ve doğru içerik türü; ana sayfada canonical ve og:image mutlak adresle; olmayan yol 404 ve markalı başlık. Paylaşım önizlemesi bir sosyal uygulamada denenmedi.
 
 ## Açık işler
 
