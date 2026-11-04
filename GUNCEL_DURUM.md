@@ -17,12 +17,14 @@
 - GitHub hesap ayarlarında `arthyrastudio.info` "Verified" (Pages verified domain; alan adı ele geçirme koruması).
 - Depo Settings → Pages: "DNS check successful", sertifika verildi, "Enforce HTTPS" açık (sayfa yenilenerek doğrulandı); GitHub "Your site is live at https://arthyrastudio.info/" gösteriyor.
 - `https://onrart.github.io/arthyra-studio/gunebirsoz/gizlilik/` → `https://arthyrastudio.info/gunebirsoz/gizlilik/` yönlendirmesi tarayıcıda görüldü.
-- Sınır: Bu makinenin DNS önbelleği hâlâ eski Squarespace adresini veriyordu; tarayıcı park sayfasını ("Yakında") gösterdi. Sitenin yeni alan adında GitHub içeriğini sunduğu bu makineden henüz görülmedi. Eski kayıtların TTL'si 1–4 saat; bu sürede eski önbellekli ziyaretçiler de park sayfasını görebilir. Bu makineden komut satırı DNS sorgusu yapılamadı (dış DNS'e erişim kapalı).
+- Canlı doğrulama (curl, 4 Kasım 2026): `arthyrastudio.info` 185.199.x.153'e çözülüyor; `/`, `/gunebirsoz/gizlilik/`, `/gunebirsoz/privacy/` HTTPS 200 ve doğru başlıklar; gizlilik sayfasında `mailto:destek@arthyrastudio.info`; `http://` → 301; eski `/GUNCEL_DURUM.md` 404.
+- Sınır: O anda `www.arthyrastudio.info` hâlâ önbellekteki Squarespace adresine (198.185.159.144) gidiyordu. Uygulama içi tarayıcı paneli de kendi önbelleğiyle park sayfasını ("Yakında") gösteriyordu. Eski kayıtların TTL'si 1–4 saat.
+- Google Play Console → Uygulama içeriği → Gizlilik politikası URL'si `https://arthyrastudio.info/gunebirsoz/gizlilik/` olarak kaydedildi (önceki: github.io adresi). Yayın özetinde "1 değişikliği incelemeye gönder" bekliyor; yönetilen yayınlama kapalı.
 
 ## Açık işler
 
-- Önbellek dolunca (4 Kasım akşamı) üç adresin GitHub içeriğini döndürdüğünü tarayıcıda doğrula.
-- Google Play Console → Uygulama içeriği → Gizlilik politikası URL'sini `https://arthyrastudio.info/gunebirsoz/gizlilik/` yap (eski adres yönlendirdiği için acil değil).
+- Play Console yayın özetinde gizlilik URL değişikliğini incelemeye gönder (kullanıcı onayı bekleniyor).
+- `www.arthyrastudio.info`'nun GitHub'a yönlendiğini önbellek dolunca doğrula.
 - Mobil uygulamada politika bağlantısının Ayarlar'a eklenmesi; uygulamanın güncel durum dosyasında takip edilir.
 - DMARC birkaç hafta rapor topladıktan sonra `p=quarantine` düşünülebilir.
 
