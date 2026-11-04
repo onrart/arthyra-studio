@@ -20,8 +20,23 @@ draft='' if email else '<div class="draft" role="note">Yayın öncesi önizleme 
 contact=(f'<a href="mailto:{escape(email)}">{escape(email)}</a>' if email else '<span class="missing-contact">Destek e-postası yayın öncesinde eklenecek.</span>')
 contact_en=(f'<a href="mailto:{escape(email)}">{escape(email)}</a>' if email else '<span class="missing-contact">A public support email will be added before publication.</span>')
 
-def head(title,description,prefix='',lang='tr'):
-    return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#222724"><link rel="icon" type="image/png" href="{prefix}assets/arthyra-icon.png"><link rel="stylesheet" href="{prefix}assets/site.css"></head><body>{draft}<a class="skip" href="#main">{'Skip to content' if lang=='en' else 'İçeriğe geç'}</a>"""
+base=config['base_url'].rstrip('/')
+if not re.fullmatch(r'https://[a-z0-9.-]+(/[A-Za-z0-9._-]+)*',base):
+    raise SystemExit('Invalid base_url')
+PAGES=['/','/gunebirsoz/gizlilik/','/gunebirsoz/privacy/']
+POLICY_ALTERNATES=[('tr','/gunebirsoz/gizlilik/'),('en','/gunebirsoz/privacy/'),('x-default','/gunebirsoz/gizlilik/')]
+
+def seo(title,description,lang,path,alternates=()):
+    # Absolute URLs come from site.json base_url; page links stay relative so local preview works.
+    url=base+path
+    links=''.join(f'<link rel="alternate" hreflang="{code}" href="{base}{alt}">' for code,alt in alternates)
+    return (f'<link rel="canonical" href="{url}">{links}<meta property="og:type" content="website"><meta property="og:site_name" content="Arthyra Studio">'
+            f'<meta property="og:title" content="{escape(title)}"><meta property="og:description" content="{escape(description)}"><meta property="og:url" content="{url}">'
+            f'<meta property="og:image" content="{base}/assets/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">'
+            f'<meta property="og:image:alt" content="Arthyra Studio"><meta property="og:locale" content="{"en_US" if lang=="en" else "tr_TR"}"><meta name="twitter:card" content="summary_large_image">')
+
+def head(title,description,prefix='',lang='tr',extra=''):
+    return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{escape(title)}</title><meta name="description" content="{escape(description)}"><meta name="theme-color" content="#222724"><link rel="icon" type="image/png" href="{prefix}assets/arthyra-icon.png"><link rel="stylesheet" href="{prefix}assets/site.css">{extra}</head><body>{draft}<a class="skip" href="#main">{'Skip to content' if lang=='en' else 'İçeriğe geç'}</a>"""
 
 def brand(prefix=''):
     return f'<a class="brand" href="{prefix or "./"}" aria-label="Arthyra Studio"><img src="{prefix}assets/arthyra-icon.png" width="43" height="43" alt="">Arthyra <span>Studio</span></a>'
@@ -31,7 +46,8 @@ def footer(prefix='',lang='tr'):
     path='privacy' if lang=='en' else 'gizlilik'
     return f'<div class="dark"><footer class="wrap footer"><span>© 2026 Arthyra Studio</span><a href="{prefix}gunebirsoz/{path}/">Güne Bir Söz · {label}</a></footer></div></body></html>'
 
-home=head('Arthyra Studio — Uygulamalar ve oyunlar','Arthyra Studio: ücretsiz uygulamalar, oyunlar ve gündelik hayata küçük bir iyi fikir.')+f"""
+home_title,home_desc='Arthyra Studio — Uygulamalar ve oyunlar','Arthyra Studio: ücretsiz uygulamalar, oyunlar ve gündelik hayata küçük bir iyi fikir.'
+home=head(home_title,home_desc,extra=seo(home_title,home_desc,'tr','/'))+f"""
 <div class="dark"><header class="wrap header">{brand()}<nav class="nav" aria-label="Ana menü"><a href="#uygulamalar">Uygulamalar</a><a href="gunebirsoz/gizlilik/">Gizlilik</a><a href="#iletisim">İletişim</a></nav></header></div>
 <main id="main"><div class="dark"><section class="wrap hero"><div><p class="eyebrow">Bağımsız uygulama stüdyosu</p><h1>İyi fikirler,<br><em>gündelik hayatın</em><br>içinde.</h1><p class="intro">Ücretsiz uygulamalar ve oyunlar geliştiriyoruz. Sade, özenli ve kullanması keyifli deneyimler için.</p><a class="arrowlink" href="#uygulamalar">İlk uygulamamızı tanıyın <span aria-hidden="true">↘</span></a></div><div class="hero-mark" aria-hidden="true"><img src="assets/arthyra-icon.png" width="512" height="512" alt=""></div></section></div>
 <section class="wrap section" id="uygulamalar"><div class="section-head"><div><p class="eyebrow">Uygulamalarımız</p><h2>Küçük bir mola.<br>Yeni bir düşünce.</h2></div><p>Güne Bir Söz, her gün bir alıntıyla kendine ayıracağın kısa bir an sunar.</p></div>
@@ -73,6 +89,16 @@ for lang,slug,sections in [('tr','gizlilik',tr),('en','privacy',en)]:
     language=('<a href="../gizlilik/" aria-current="page" lang="tr">TR</a> / <a href="../privacy/" lang="en">EN</a>' if lang=='tr' else '<a href="../gizlilik/" lang="tr">TR</a> / <a href="../privacy/" aria-current="page" lang="en">EN</a>')
     summary=('<strong>Kısaca:</strong> Favoriler ve tercihler cihazında tutulur. Alıntı yenilerken Vikisöz’e internet isteği yapılır. Bildirimler yereldir; paylaşımı sen başlatırsın.' if lang=='tr' else '<strong>At a glance:</strong> Favorites and preferences are stored on your device. Refreshing quotations connects to Wikiquote. Reminders are local, and sharing is initiated by you.')
     date=(f'Son güncelleme: {updated.day} {months_tr[updated.month-1]} {updated.year}' if lang=='tr' else f'Last updated: {updated.day} {months_en[updated.month-1]} {updated.year}')
-    html=head(f'Güne Bir Söz — {title} | Arthyra Studio',intro,'../../',lang)+f"""<header class="wrap header">{brand('../../')}<nav class="language" aria-label="Language">{language}</nav></header><main class="wrap policy" id="main"><div class="policy-layout"><aside class="policy-index" aria-label="{'İçindekiler' if lang=='tr' else 'Contents'}"><strong>{'Bu sayfada' if lang=='tr' else 'On this page'}</strong>{toc}</aside><article><p class="eyebrow">Arthyra Studio / Güne Bir Söz</p><h1>{title}</h1><p class="lead">{intro}</p><div class="meta"><span>{date}</span><span>Android · com.onrart.gunlukalinti</span></div><div class="summary"><p>{summary}</p></div>{article}</article></div></main>"""+footer('../../',lang)
+    page_title=f'Güne Bir Söz — {title} | Arthyra Studio'
+    html=head(page_title,intro,'../../',lang,seo(page_title,intro,lang,f'/gunebirsoz/{slug}/',POLICY_ALTERNATES))+f"""<header class="wrap header">{brand('../../')}<nav class="language" aria-label="Language">{language}</nav></header><main class="wrap policy" id="main"><div class="policy-layout"><aside class="policy-index" aria-label="{'İçindekiler' if lang=='tr' else 'Contents'}"><strong>{'Bu sayfada' if lang=='tr' else 'On this page'}</strong>{toc}</aside><article><p class="eyebrow">Arthyra Studio / Güne Bir Söz</p><h1>{title}</h1><p class="lead">{intro}</p><div class="meta"><span>{date}</span><span>Android · com.onrart.gunlukalinti</span></div><div class="summary"><p>{summary}</p></div>{article}</article></div></main>"""+footer('../../',lang)
     (ROOT/f'docs/gunebirsoz/{slug}/index.html').write_text(html,encoding='utf-8')
-print('Generated home + Turkish/English privacy pages. Contact:', 'ready' if email else 'awaiting user address')
+# GitHub Pages serves 404.html for any missing path, so links are root-absolute here.
+notfound=head('Sayfa bulunamadı | Arthyra Studio','Aradığın sayfa bulunamadı.','/','tr','<meta name="robots" content="noindex">')+f"""
+<div class="dark"><header class="wrap header">{brand('/')}<nav class="nav" aria-label="Ana menü"><a href="/#uygulamalar">Uygulamalar</a><a href="/gunebirsoz/gizlilik/">Gizlilik</a><a href="/#iletisim">İletişim</a></nav></header></div>
+<main id="main" class="wrap notfound"><p class="eyebrow">404</p><h1>Bu sayfa bulunamadı.</h1><p class="lead">Aradığın adres taşınmış ya da hiç var olmamış olabilir.<br><span lang="en">This page could not be found.</span></p><div class="actions"><a class="button" href="/">Ana sayfaya dön</a><a href="/gunebirsoz/gizlilik/">Güne Bir Söz gizlilik politikası</a></div></main>
+"""+footer('/')
+(ROOT/'docs/404.html').write_text(notfound,encoding='utf-8')
+urls=''.join(f'<url><loc>{base}{path}</loc><lastmod>{updated.isoformat()}</lastmod></url>' for path in PAGES)
+(ROOT/'docs/sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{urls}</urlset>\n',encoding='utf-8')
+(ROOT/'docs/robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n',encoding='utf-8')
+print('Generated home, Turkish/English privacy, 404, sitemap and robots. Contact:', 'ready' if email else 'awaiting user address')

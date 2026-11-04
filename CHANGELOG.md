@@ -2,6 +2,7 @@
 
 ## 4 Kasım 2026
 
+- Canonical/hreflang/Open Graph etiketleri, `og-image.jpg`, `sitemap.xml`, `robots.txt` Sitemap satırı ve markalı `404.html` eklendi; görünen içerik değişmedi.
 - Play Console gizlilik politikası URL'si yeni adrese çevrildi (Google incelemesine gönderildi).
 - Özel alan adı `arthyrastudio.info` bağlandı (`docs/CNAME`, Squarespace DNS, GitHub alan adı doğrulaması); `site.json` `base_url` güncellendi.
 - `GUNCEL_DURUM.md` herkese açık `docs/` kökünden proje köküne taşındı (önceden `/GUNCEL_DURUM.md` olarak yayındaydı).

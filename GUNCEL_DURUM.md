@@ -21,6 +21,11 @@
 - Sınır: O anda `www.arthyrastudio.info` hâlâ önbellekteki Squarespace adresine (198.185.159.144) gidiyordu. Uygulama içi tarayıcı paneli de kendi önbelleğiyle park sayfasını ("Yakında") gösteriyordu. Eski kayıtların TTL'si 1–4 saat.
 - Google Play Console → Uygulama içeriği → Gizlilik politikası URL'si `https://arthyrastudio.info/gunebirsoz/gizlilik/` olarak kaydedildi (önceki: github.io adresi). Kullanıcı onayıyla 4 Kasım 2026'da incelemeye gönderildi; yayın özetinde "İncelenmekte olan değişiklikler" altında, önce otomatik hızlı kontroller (≤14 dk). Yönetilen yayınlama kapalı, onaylanınca kendiliğinden yürürlüğe girer.
 
+## Teknik SEO (4 Kasım 2026)
+
+- Üretece canonical, TR/EN hreflang (x-default TR), Open Graph/Twitter kartı, 1200×630 `og-image.jpg`, `sitemap.xml`, robots Sitemap satırı ve markalı `404.html` (noindex) eklendi.
+- Doğrulama: dört HTML'de etiket dengesi, tek h1, benzersiz kimlik ve baş etiketleri Python HTMLParser ile; sitemap XML ayrıştırıldı; yerel önizlemede 404 masaüstü/mobil (375 px, yatay taşma yok) ve ana sayfa görselleri/konsol hatasız. Canlı kontrol aşağıda.
+
 ## Açık işler
 
 - Play Console'da gizlilik URL incelemesinin onaylandığını kontrol et (Google: genelde 7 güne kadar).
