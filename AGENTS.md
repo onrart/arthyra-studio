@@ -5,6 +5,7 @@ GitHub Pages için buildless HTML/CSS sitesi. Yayıncı Arthyra Studio; ilk uygu
 - `site.json`: genel site adresi, kullanıcı tarafından seçilecek herkese açık destek e-postası, politika tarihi.
 - `generate.py`: ana sayfa ve TR/EN gizlilik HTML'lerini üretir.
 - `docs/`: GitHub Pages yayın kökü; CSS ve yerel marka görselleri burada.
+- `docs/CNAME`: özel alan adı `arthyrastudio.info`. Silme; üretici dokunmaz. DNS Squarespace'te (GitHub Pages A/AAAA, `www` CNAME, `_github-pages-challenge-onrart` doğrulama TXT); Google Workspace MX/SPF/DKIM/DMARC kayıtlarına dokunma.
 - `GUNCEL_DURUM.md`: güncel durum ve sonraki adım. `docs/` içine koyma; orası herkese açık yayın köküdür.
 
 Komutlar: `python generate.py` yerel taslak üretir; `python generate.py --publish` iletişim e-postası eksikse durur. `python -m http.server 8787 --bind 127.0.0.1 --directory docs` yerel önizleme.
