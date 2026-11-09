@@ -45,3 +45,8 @@ Doğrulama (ilk yayın): Üç HTML sayfasında etiket dengesi, tek h1, benzersiz
 Politika dayanağı: Güne Bir Söz 1.1.1 uygulamasının storage, catalog, wikiquote, notifications, widget, story ve Android manifesti statik incelemesi. Yerel kayıt, doğrudan Vikisöz bağlantısında ağ metadatası, yerel bildirim, kullanıcı başlatmalı paylaşım ve allowBackup=true sistem yedeklemesi açıklanır. Google kabulü/hukuki uygunluk garantisi verilmez.
 
 Yayın kapsamı bu site dosyaları ve kamuya açık logolardır. Mobil uygulamanın özel kaynakları ve imza dosyaları bu depoya dahil edilmedi. site.json ve generate.py, sonraki politika/iletişim güncellemeleri için tek kaynaktır; `python generate.py --publish` sonrası HTML değişiklikleri commit/push ile Pages'e gider. Sayfalar göreli bağlantı kullanır; `base_url` şu an üreteçte kullanılmıyor.
+
+## 9 Kasım 2026 — katalog genişledi (Claude)
+
+- `docs/gunebirsoz/sozler-v1.json` gunluk-alinti betiğiyle yeniden üretildi: 346 yazar, 2.688 söz (920 yeni, 142 çıkan). `generate.py --publish` ile `kaynaklar/index.html` güncellendi. **Commit/push edilmedi**; canlıda hâlâ 4 Kasım kataloğu (1.910 söz) var.
+- Haftalık otomatik yenileme gunluk-alinti deposundaki `.github/workflows/katalog.yml` ile yapılacak; bu depoya yazma yetkili deploy key gerekir (henüz eklenmedi).

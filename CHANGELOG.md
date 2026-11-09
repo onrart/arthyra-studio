@@ -1,5 +1,9 @@
 # Değişiklik günlüğü
 
+## 9 Kasım 2026
+
+- Söz kataloğu dünya yazarlarıyla genişledi: 346 yazar, 2.688 söz (önce 141 / 1.910). Kaynaklar sayfası yeniden üretildi.
+
 ## 4 Kasım 2026
 
 - "Kaynaklar ve lisans" sayfası (`/gunebirsoz/kaynaklar/`) eklendi: katalogdaki 141 yazarın Vikisöz sayfa sürümü ve katkıda bulunanlar bağlantıları, CC BY-SA 4.0 ve derleme açıklaması.
