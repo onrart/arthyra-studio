@@ -48,5 +48,5 @@ Yayın kapsamı bu site dosyaları ve kamuya açık logolardır. Mobil uygulaman
 
 ## 9 Kasım 2026 — katalog genişledi (Claude)
 
-- `docs/gunebirsoz/sozler-v1.json` gunluk-alinti betiğiyle yeniden üretildi: 346 yazar, 2.688 söz (920 yeni, 142 çıkan). `generate.py --publish` ile `kaynaklar/index.html` güncellendi. **Commit/push edilmedi**; canlıda hâlâ 4 Kasım kataloğu (1.910 söz) var.
+- `docs/gunebirsoz/sozler-v1.json` gunluk-alinti betiğiyle yeniden üretildi: 346 yazar, 2.688 söz (920 yeni, 142 çıkan). `generate.py --publish` ile `kaynaklar/index.html` güncellendi. `2a71295` ile push edildi; canlıda doğrulandı (curl): `sozler-v1.json` count 2.688, kaynaklar sayfası "2688 söz · 346 yazar".
 - Haftalık otomatik yenileme gunluk-alinti deposundaki `.github/workflows/katalog.yml` ile yapılacak; bu depoya yazma yetkili deploy key gerekir (henüz eklenmedi).
