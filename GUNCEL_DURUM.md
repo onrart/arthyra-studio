@@ -50,3 +50,7 @@ Yayın kapsamı bu site dosyaları ve kamuya açık logolardır. Mobil uygulaman
 
 - `docs/gunebirsoz/sozler-v1.json` gunluk-alinti betiğiyle yeniden üretildi: 346 yazar, 2.688 söz (920 yeni, 142 çıkan). `generate.py --publish` ile `kaynaklar/index.html` güncellendi. `2a71295` ile push edildi; canlıda doğrulandı (curl): `sozler-v1.json` count 2.688, kaynaklar sayfası "2688 söz · 346 yazar".
 - Haftalık otomatik yenileme gunluk-alinti deposundaki `.github/workflows/katalog.yml` ile yapılacak; bu depoya yazma yetkili deploy key gerekir (henüz eklenmedi).
+
+## 10 Kasım 2026 — Ana sayfada Osmanlı Seferi
+
+Ana sayfa iki projeyi tanıtıyor. generate.py ve docs/assets/site.css üzerinden Osmanlı Seferi kartı eklendi, oyun geliştirme aşamasında olarak gösteriliyor. Oyun özellikleri proje hafızası ve kaynak yapısı üzerinden kontrol edildi. Site üretimi ve ana sayfanın yerel bağlantı kontrolü geçti. Bu değişiklik henüz canlıya yayımlanmadı.

@@ -3,3 +3,29 @@
 @media(max-width:900px){.wrap{width:min(100% - 40px,760px)}.hero{grid-template-columns:1fr .6fr;gap:25px;padding:55px 0 70px}.hero-mark{padding:12px;border-radius:24px}.app{gap:30px;padding:28px}.policy-layout{grid-template-columns:1fr;gap:20px}.policy-index{position:static;border-bottom:1px solid var(--line);padding-bottom:18px;display:flex;flex-wrap:wrap;gap:6px 18px}.policy-index strong{width:100%;margin-bottom:4px}.policy-index a{margin:3px 0}.principles{gap:25px}.section{padding:60px 0}}
 @media(max-width:640px){.header{padding:20px 0;align-items:flex-start}.brand{font-size:1rem;gap:9px}.brand img{width:35px;height:35px}.nav{gap:10px 16px;justify-content:flex-end;font-size:.8rem;max-width:150px}.hero{grid-template-columns:1fr;padding:40px 0 55px}.hero h1{font-size:3.45rem}.hero-mark{display:none}.intro{font-size:1.03rem}.section-head{display:block}.section-head p{margin-top:20px}.app{grid-template-columns:1fr;padding:23px;gap:28px}.quote-sample{padding:28px}.features{gap:10px 14px;font-size:.85rem}.principles{grid-template-columns:1fr;gap:15px}.principles h3{margin-top:9px}.contact{display:block;padding:42px 0}.contact-address{margin-top:24px}.footer{flex-direction:column;gap:8px}.policy{padding-top:23px}.policy h1{font-size:2.7rem}.policy-index{font-size:.79rem}.policy td,.policy th{font-size:.82rem;padding:10px 7px}.language{font-size:.8rem}.summary{padding:19px}.policy h2{padding-top:23px}.draft{font-size:.72rem}.policy .lead{font-size:1.03rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.game { margin-top: 24px; }
+.game .features { margin-bottom: 0; }
+.game-art {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(20px, 4vw, 44px);
+  border: 1px solid #6e5041;
+  border-radius: 20px;
+  background: radial-gradient(ellipse at top, #654438, #382821 78%);
+  color: #f5e7d4;
+  text-align: center;
+}
+.game-art-label {
+  color: #eac19c;
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.game-art-title {
+  width: 100%;
+  padding: 20px 0;
+  border-block: 1px solid #eac19c66;
+  font: 500 clamp(1.8rem, 4.3vw, 3.45rem)/1.05 Georgia, serif;
+}

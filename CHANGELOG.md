@@ -13,3 +13,7 @@
 - Özel alan adı `arthyrastudio.info` bağlandı (`docs/CNAME`, Squarespace DNS, GitHub alan adı doğrulaması); `site.json` `base_url` güncellendi.
 - `GUNCEL_DURUM.md` herkese açık `docs/` kökünden proje köküne taşındı (önceden `/GUNCEL_DURUM.md` olarak yayındaydı).
 - İlk yayın: Arthyra Studio ana sayfası, Güne Bir Söz TR/EN gizlilik politikaları, iletişim destek@arthyrastudio.info.
+
+## 10 Kasım 2026
+
+- Ana sayfaya Osmanlı Seferi tanıtımı eklendi ve proje bölümü iki ürünü kapsayacak şekilde güncellendi.
