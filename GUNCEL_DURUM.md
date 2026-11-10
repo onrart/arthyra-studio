@@ -53,4 +53,4 @@ Yayın kapsamı bu site dosyaları ve kamuya açık logolardır. Mobil uygulaman
 
 ## 10 Kasım 2026 — Ana sayfada Osmanlı Seferi
 
-Ana sayfa iki projeyi tanıtıyor. generate.py ve docs/assets/site.css üzerinden Osmanlı Seferi kartı eklendi, oyun geliştirme aşamasında olarak gösteriliyor. Oyun özellikleri proje hafızası ve kaynak yapısı üzerinden kontrol edildi. Site üretimi ve ana sayfanın yerel bağlantı kontrolü geçti. Bu değişiklik henüz canlıya yayımlanmadı.
+Ana sayfa iki projeyi tanıtıyor. generate.py ve docs/assets/site.css üzerinden Osmanlı Seferi kartı eklendi, oyun geliştirme aşamasında olarak gösteriliyor. Oyun özellikleri proje hafızası ve kaynak yapısı üzerinden kontrol edildi. Site üretimi ve ana sayfanın yerel bağlantı kontrolü geçti. GitHub Pages üzerinden b14730d ile yayımlandı. Canlı ana sayfa ve CSS HTTP 200 döndü; Osmanlı Seferi kartının HTML’de ve yeni stillerin CSS dosyasında olduğu doğrulandı.
